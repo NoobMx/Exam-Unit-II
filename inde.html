@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Unidad II</title>
+</head>
+<body>
+    <h1>Equipo de computo</h1>
+    <em>Especificaciones:</em>
+    <br></br>
+    <input type="number" id="codigo" placeholder="Código" >
+
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="number" id="numero" placeholder="Cantidad">
+    <br><br/>
+    <button id="add">Agregar</button> 
+    <button id="soli" >Prestamos</button>
+    <div id="Impresion">
+        
+    </div>
+    <div id="Prestamos">
+
+    </div>
+    <div id="ImpresionP">
+
+    </div>
+    <td style="text-align: center;"></td>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+
+    var equipodeComputo =[];
+    var usuario = [];
+    var opciones = [];
+
+    $("#add").click(function(){
+             var contador=0;
+             contador++;
+             var nombre = $("#nombre").val();
+             equipodeComputo.push(nombre);
+             var codigo = $("#codigo").val();
+             equipodeComputo.push(codigo);
+             var numero = $("#numero").val();
+             equipodeComputo.push(numero);
+             $("#Impresion").append("<th>"+"Nombre del equipo"+"</th>",
+                "<th>"+"Código"+"</th>",
+                "<th>"+"Cantidad"+"</th>",
+                "<tr>"+"<td>"+nombre+"</td>"+"<td>"+codigo+"</td>"+"<td>"+numero+"</td>"+"</tr>");
+                console.log(equipodeComputo);
+        
+    });
+
+    $ ("#soli").click(function(){
+
+
+        $("#Prestamos").append("<p>"+"Nombre del Usuario"+"</p>"+"<input id='usuarioP' placeholder='Usuario'>");
+        $("#Prestamos").append("<br>"+"</br>");
+        $("#Prestamos").append("<select>"+
+            "<option value='1'>"+equipodeComputo[0]+"</option>"+
+            "<option value='2'>"+equipodeComputo[3]+"</option>"+
+            "<option value='3'>"+equipodeComputo[6]+"</option>"+
+            "<option value='4   '>"+equipodeComputo[9]+"</option>"+
+            "</select>");
+        $("#Prestamos").append("<p>"+'Cantidad:'+"</p>"+"<input id='cantP' size='1' placeholder='.   .   .'>"+"<button id='solicitarPrestamo' style='background-color: crimson;'>"+'Solicitar prestamo'+"</button>");
+        $("#solicitarPrestamo").click(function(){
+            var nombreUsuario =$("#usuarioP").val();
+            usuario.push(nombreUsuario);
+            var nombreEquipo = equipodeComputo[0];
+            usuario.push(nombreEquipo);
+            // var nombreEquipo1=equipodeComputo[3];
+            // usuario.push(nombreEquipo1);
+            // equipodeComputo2=equipodeComputo[6];
+            // usuario.push(equipodeComputo2);
+            // equipodeComputo3=equipodeComputo[9];
+            // usuario.push(equipodeComputo3);
+            var cantidad =$("#cantP").val();
+            usuario.push(cantidad);
+
+            console.log(usuario);
+
+            let existe = false;
+            for(let i = 1; i < usuario.length; i++){
+                if (nombreUsuario!=usuario[i]) {
+                    console.log("No existe");
+                }
+                 if(nombreUsuario=usuario[i]){
+                    alert("El usuario ya tiene un prestamo");
+                 }
+
+                
+            }
+            $("#ImpresionP").append("<th>"+'Usuario'+"</th>",
+            "<th>"+'Nombre del equipo'+"</th>",
+            "<th>"+'Cantidad'+"</th>",
+            "<tr>"+"<td style='text-align: center;'>"+usuario[0]+"</td>"+"<td style='text-align: center;'>"+usuario[1]+"</td>"+"<td style='text-align: center;'>"+usuario[2]+"</td>"+"</tr>")
+            
+
+        });
+
+        
+
+    });
+
+
+
+</script>
+</html>
